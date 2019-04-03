@@ -3,52 +3,37 @@
 //Due: 4/12/19 Last edit: 4/8/19
 //EE312
 
-
-#include <iostream>
-#include <string>
 using namespace std;
 
-#include "card.cpp"
+#include "card.h"
+#include <string>
+#include <iostream>
+#include <stdio.h>
+#include <cstdlib>
 
 
 
+//default card classes Card() 
+//Card(int rank, Suit s) where the suit is considered and rank is pre set
 Card::Card(){         // default, ace of spades
     myRank = 1;
-    mySuit = Suit::spades;    
+    mySuit = spades;    
 }
-Card(int rank, Suit s){
+
+Card::Card(int rank, Suit s){
     myRank= rank;
-    mySuit = Suit::s;
+    mySuit = s;
 }
 
 string Card::toString() const{
-    string r; //corrects the value of rank to a string
-    if(myRank==1){
-        r="A";
-    }else if(myRank==11){
-        r="J";
-    }else if(myRank==12){
-        r="Q";
-    }else if(myRank==13){
-        r="K";
-    }else{
-     r= <string>myRank;
-    }
-    string s;//corrects the value of suit to a string
-    if(mySuit ==0){
-        s='s';
-    } else if(mySuit==1){
-        s='h';
-    } else if(mySuit==1){
-        s='d';
-    } else if(mySuit==1){
-        s='c';
-    }
+    string r = this->rankString(myRank); //corrects the value of rank to a string
+    string s = this->suitString(mySuit);
     return (r+s);//appends together to output
 }  // return string version e.g. Ac 4h Js
+
 bool Card::sameSuitAs(const Card& c) const  // true if suit same as c
 {
-    return (this->mySuit == c->mySuit);
+    return (this->mySuit == c.mySuit);
 }
 // return rank, 1..13
 int  Card::getRank() const
@@ -56,37 +41,37 @@ int  Card::getRank() const
     return myRank;
 }
 // return "s", "h",...
-string suitString(Suit s) const {
-      string s;//corrects the value of suit to a string
-    if(mySuit ==0){
-        s='s';
-    } else if(mySuit==1){
-        s='h';
-    } else if(mySuit==1){
-        s='d';
-    } else if(mySuit==1){
-        s='c';
-    }  
-    return s;
+string Card::suitString(Suit s) const 
+{
+    //corrects the value of suit to a string
+    switch(s){
+        case spades : return "s";
+        case hearts : return "h";
+        case diamonds : return "d";
+        case clubs : return "c";
+
+    }
+    return to_string(s);
 } 
 
-string rankString(int r) const
-{// return "A", "2", ..."Q"  
-    string r; //corrects the value of rank to a string
-    if(myRank==1){
-        r="A";
-    }else if(myRank==11){
-        r="J";
-    }else if(myRank==12){
-        r="Q";
-    }else if(myRank==13){
-        r="K";
+string Card::rankString(int r) const
+{// return "A", "2", ..."Q"
+
+    string z; //corrects the value of rank to a string
+    if(r==1){
+        z="A";
+    }else if(r==11){
+        z="J";
+    }else if(r==12){
+        z="Q";
+    }else if(r==13){
+        z="K";
     }else{
-     r= <string>myRank;
+     z= to_string(r);
     }
-    return r;
+    return z;
 }
-bool operator == (const Card& rhs) const{
+bool Card::operator == (const Card& rhs) const{
     if(myRank == rhs.myRank){
         if(mySuit == rhs.mySuit){
             return true;
@@ -94,7 +79,7 @@ bool operator == (const Card& rhs) const{
     }
     return false;
 }
-bool operator != (const Card& rhs) const{
+bool Card::operator != (const Card& rhs) const{
     if(myRank == rhs.myRank){
         if(mySuit == rhs.mySuit){
             return false;
@@ -102,3 +87,11 @@ bool operator != (const Card& rhs) const{
     }
     return true;
 }
+
+ostream& operator << (ostream& out, const Card& c){
+
+    out << c.toString();
+    return out;
+}
+
+Card::~Card(){}
