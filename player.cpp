@@ -12,6 +12,9 @@ using namespace std;
 #include <cstdlib>
 #include <ctime>
 
+Player::Player(){
+    myName ="";
+}
 
 //adds a card to the hand
 void Player::addCard(Card c){
@@ -21,15 +24,15 @@ void Player::addCard(Card c){
 //makes a book or pair of cards if possible
 //adds to the book vector for that player
 void Player::bookCards(Card c1, Card c2){
-    //checks hand for the max number of books possible
-    for(int i=0; i <(myHand.size()%2); i++){
-        if(checkHandForBook(c1, c2)){
+    
+    checkHandForBook(c1, c2);
+    //add the cards to the myBooks vector
+    myBook.push_back(c1);
+    myBook.push_back(c2);
 
-        
-        }
-
-    }
-
+    //card is no longer in the hand, so remove them
+    this->removeCardFromHand(c1);
+    this->removeCardFromHand(c2);
 }
 
 //OPTIONAL
@@ -38,10 +41,11 @@ void Player::bookCards(Card c1, Card c2){
 //If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
 
 bool Player::checkHandForBook(Card &c1, Card &c2){
+
     //should be useful inside the book Cards function speed
     for( Card c : myHand){
-        if(rankInHand(c)){
-            for(Card k: myHand){
+        if(rankInHand(c)){ //if there is another card in the hand with that rank
+            for(Card k: myHand){ //find that other card 
                 if(k.getRank() == c.getRank() && k!=c){
                     c1=c;
                     c2=k;
@@ -69,36 +73,86 @@ bool Player::rankInHand(Card c) const{
 //uses some strategy to choose one card from the player's
 //hand so they can say "Do you have a 4?"
 Card Player::chooseCardFromHand() const{
-
+    //first check if the player has cards in their hands to give
+    srand((unsigned)time(NULL));
+    if(myHand.size() > 0){
+        int i = rand() % myHand.size(); //pick a random card in the hand
+        Card picked = myHand[i];
+        return picked;
+    } else
+    {
+        Card allout = Card(rand()%14,Card::spades); // picks a random card (suit doesnt matter)
+    }
+    
 }
 
 //Does the player have the card c in her hand?
 bool Player::cardInHand(Card c) const{
-
+    for (int i = 0; i < myHand.size(); i++){
+        if (myHand[i].getRank() == c.getRank()){
+            return true; //card is found return true
+        }
+    }
+    return false;
 }
 
 //Remove the card c from the hand and return it to the caller
 Card Player::removeCardFromHand(Card c){
+    //marks the card to delete
+    vector<Card>::iterator z;
+    Card reserve = Card();
+    bool found = false;
+    for(z = myHand.begin(); z != myHand.end() && !found; z++){
+        if((*z).getRank() == c.getRank()){
+            found = true;
+            reserve = (*z); 
+        }
+    }
 
+    if(found){
+        c = (*z);
+        z = --z;
+        //iterator operation to move the vector back one and remove the card
+        myHand.erase(z);
+    }
+    return reserve; //returns the card it tried to delete
 }
 
 string Player::showHand() const{
+    //Make a title to print before hand
+    string pHand = myName;
+    pHand.append(" hand -- ");
 
+    //appends each hand to the end of the return string
+    for(int i = 0; i < myHand.size(); i++){
+        pHand.append(myHand[i].toString());
+        pHand.append(" ");
+    }
+    return pHand;
 }
 
 //print through all books in book vector
 string Player::showBooks() const{
+    //Make a title to print before book
+    string pBooks = myName;
+    pBooks.append(" books -- ");
 
+    //appends each book to the end of the return string
+    for(int i = 0; i < myHand.size(); i++){
+        pBooks.append(myHand[i].toString());
+        pBooks.append(" ");
+    }
+    return pBooks;
 }
 
 //returns the number of cards in hand vector
 int Player::getHandSize() const{
-
+    return myHand.size();
 }
 
 //returns the number of books in book vector
 int Player::getBookSize() const{
-
+    return myHand.size() / 2;
 }
     
 //OPTIONAL
