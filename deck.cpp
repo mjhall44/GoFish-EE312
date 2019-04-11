@@ -18,14 +18,14 @@ Deck::Deck(){
     //creates a default deck of 52 cards, one of each type
     myCards[SIZE];
     myIndex = 0;
-    int cardcounts=0;
-    for(int ranks=1; ranks <=13; ranks++){
-        for(int suits = 0; suits <=3; suits++){
-            myCards[cardcounts]=Card(ranks, (Card::Suit)suits);
-            cardcounts++;
+    for(int suits = 0; suits <=3; suits++){
+        for(int ranks=1; ranks <=13; ranks++){
+            myCards[myIndex]=Card(ranks, (Card::Suit)suits);
+            myIndex++;
         }
 
     }
+    myIndex = 0;
 }
 
 //to shuffle the deck, we used a shuffle helper function
@@ -42,6 +42,7 @@ void Deck::shuffle()   // shuffle the deck, all 52 cards present
     srand(seed);
 
     //starting with the first card, randomly swap through the array
+
     for(int i = SIZE-1; i >=0; i--){
         //cout << rand() << "   ::  i - "<<i << " :: ";
         
@@ -62,8 +63,7 @@ Card Deck::dealCard()   // get a card, after 52 are dealt, fail
     } else{
         cout << "Dealing Card fails, deck is full" << endl;
 
-        //return 0; has to return a card variable
-        Card def = Card();
+        Card def = Card(-1,Card:: spades); // suit doesn't matter
         return def; //returns a default card
     }
 

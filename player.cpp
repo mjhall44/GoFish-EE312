@@ -24,8 +24,7 @@ void Player::addCard(Card c){
 //makes a book or pair of cards if possible
 //adds to the book vector for that player
 void Player::bookCards(Card c1, Card c2){
-    
-    checkHandForBook(c1, c2);
+
     //add the cards to the myBooks vector
     myBook.push_back(c1);
     myBook.push_back(c2);
@@ -80,8 +79,9 @@ Card Player::chooseCardFromHand() const{
         Card picked = myHand[i];
         return picked;
     } else
-    {
-        Card allout = Card(rand()%14,Card::spades); // picks a random card (suit doesnt matter)
+    {   // will not run into empty hand when calling this function
+        Card allout = Card(-1,Card::spades); // picks a random card (suit doesnt matter)
+        return allout;
     }
     
 }
@@ -99,21 +99,20 @@ bool Player::cardInHand(Card c) const{
 //Remove the card c from the hand and return it to the caller
 Card Player::removeCardFromHand(Card c){
     //marks the card to delete
-    vector<Card>::iterator z;
+    vector<Card>::iterator iter;
     Card reserve = Card();
     bool found = false;
-    for(z = myHand.begin(); z != myHand.end() && !found; z++){
-        if((*z).getRank() == c.getRank()){
+    for(iter = myHand.begin(); iter != myHand.end() && !found; iter++){
+        if((*iter).getRank() == c.getRank()){
             found = true;
-            reserve = (*z); 
+            reserve = (*iter);
         }
     }
 
     if(found){
-        c = (*z);
-        z = --z;
+        iter = --iter;
         //iterator operation to move the vector back one and remove the card
-        myHand.erase(z);
+        myHand.erase(iter);
     }
     return reserve; //returns the card it tried to delete
 }
@@ -138,8 +137,8 @@ string Player::showBooks() const{
     pBooks.append(" books -- ");
 
     //appends each book to the end of the return string
-    for(int i = 0; i < myHand.size(); i++){
-        pBooks.append(myHand[i].toString());
+    for(int i = 0; i < myBook.size(); i=1+2){
+        pBooks.append(myBook[i].toString());
         pBooks.append(" ");
     }
     return pBooks;
@@ -152,7 +151,7 @@ int Player::getHandSize() const{
 
 //returns the number of books in book vector
 int Player::getBookSize() const{
-    return myHand.size() / 2;
+    return myBook.size() / 2;
 }
     
 //OPTIONAL
@@ -160,16 +159,16 @@ int Player::getBookSize() const{
 //this function will check a players hand for a pair. 
 //If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
 
-bool Player::checkHandForPair(Card &c1, Card &c2){
+//bool Player::checkHandForPair(Card &c1, Card &c2){
     //optional, return false
-    return false;
-}
+    //return false;
+//}
 
 //OPTIONAL
 // comment out if you decide to not use it    
 //Does the player have a card with the same rank as c in her hand?
 //e.g. will return true if the player has a 7d and the parameter is 7c
-bool Player::sameRankInHand(Card c) const{
+//bool Player::sameRankInHand(Card c) const{
     //optional, return false
-    return false;
-}
+   // return false;
+//}

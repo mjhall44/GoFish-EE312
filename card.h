@@ -1,6 +1,6 @@
 //File Name: card.h
 //
-//Written by Owen Astrachan and Roger Priebe
+//Written by Matthew Hall and Po-Chih Chen
 // This class represents a playing card, i.e., "ace of spades"
 // a Card is constructed from a rank (int in range 1..13)
 // and a suit (Card::spades, Card::hearts, Card::diamonds,

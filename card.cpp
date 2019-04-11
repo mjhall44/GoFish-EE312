@@ -10,6 +10,7 @@ using namespace std;
 #include <iostream>
 #include <stdio.h>
 #include <cstdlib>
+#include <sstream>
 
 
 
@@ -51,13 +52,13 @@ string Card::suitString(Suit s) const
         case clubs : return "c";
 
     }
-    return to_string(s);
 } 
 
 string Card::rankString(int r) const
 {// return "A", "2", ..."Q"
 
     string z; //corrects the value of rank to a string
+    stringstream ss;
     if(r==1){
         z="A";
     }else if(r==11){
@@ -67,7 +68,8 @@ string Card::rankString(int r) const
     }else if(r==13){
         z="K";
     }else{
-     z= to_string(r);
+     ss<<r;
+     z= ss.str();
     }
     return z;
 }
