@@ -6,11 +6,15 @@
 using namespace std;
 
 #include "player.h"
+#include "card.h"
+#include "deck.h"
 #include <string>
 #include <iostream>
 #include <stdio.h>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
+
 
 Player::Player(){
     myName ="";
@@ -42,10 +46,12 @@ void Player::bookCards(Card c1, Card c2){
 bool Player::checkHandForBook(Card &c1, Card &c2){
 
     //should be useful inside the book Cards function speed
-    for( Card c : myHand){
+    for(int i = 0; i < myHand.size(); i++){
+	Card c = myHand[i];
         if(rankInHand(c)){ //if there is another card in the hand with that rank
-            for(Card k: myHand){ //find that other card 
-                if(k.getRank() == c.getRank() && k!=c){
+            for(int j=0; j < myHand.size(); j++){ //find that other card 
+        	Card k = myHand[j];
+	        if(k.getRank() == c.getRank() && k!=c){
                     c1=c;
                     c2=k;
                     return true;
@@ -61,7 +67,8 @@ bool Player::checkHandForBook(Card &c1, Card &c2){
 //Does the player have a card with the same rank as c in her hand?
 bool Player::rankInHand(Card c) const{
     //should be useful, quick scan through hand vector
-    for(Card k : myHand){
+    for(int j=0; j < myHand.size(); j++){ //find that other card 
+      	Card k = myHand[j];
         if(k.getRank() == c.getRank() && k!=c){
             return true;
         }
