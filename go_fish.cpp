@@ -57,13 +57,16 @@ int main( ) {
 
         Card card1;
         Card picked1;    // initialization
+	bool p1guess = true;
+while(p1guess){
         if (p1.getHandSize() > 0) {
             card1 = p1.chooseCardFromHand(); //p1 chooses a card from hand and asks p2 if they have the card(s)
             myfile << p1.getName() << " asks- Do you have a " << card1.rankString(card1.getRank()) << "?" << endl;
             //p2 checks his hand for requested card
             if (!(p2.cardInHand(card1))) {//if the player doesn't have the requested card, print go fish
                 myfile << p2.getName() << " says: Go Fish" << endl;
-                // check empty deck???
+             	p1guess = false; //no repitition
+		   // check empty deck???
                 if (d.size() > 0) {
                     Card picked;
                     picked = d.dealCard();
@@ -108,12 +111,14 @@ int main( ) {
 	if(p1.getBookSize() >13){
 		break;
 	}
-
+}
         //**************POCHIH'S TURN
 
         Card card2;
         Card picked2;  // initialization
-        //int oldBookSize;
+	bool p2guess = true;
+while(p2guess){ 
+       //int oldBookSize;
         if (p2.getHandSize() > 0) {
             card2 = p2.chooseCardFromHand();
             myfile << p2.getName() << " asks: Do you have a " << card2.rankString(card2.getRank()) << "?" << endl;
@@ -121,6 +126,7 @@ int main( ) {
             if (!(p1.cardInHand(card2))) {//if the player doesn't have the requested card, print go fish
                 myfile << p1.getName() << " says: Go Fish" << endl;
                 // check empty deck???
+                p2guess =false;
                 if (d.size() > 0) {
                     Card picked3;
                     picked3 = d.dealCard();
@@ -162,6 +168,7 @@ int main( ) {
             myfile << p1.showHand() << endl; // update player's after picking up a card if the player doesn't ask
             myfile << p2.showHand() << endl;
         }
+}
     }
 
     if (p1.getBookSize() == p2.getBookSize()) {
