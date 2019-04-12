@@ -1,0 +1,136 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.cpp
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+string
+-
+iostream
+-
+stdio.h
+-
+cstdlib
+-
+sstream
+-
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+iostream
+-
+string
+-
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card_demo.cpp
+iostream
+-
+cstdlib
+-
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+player.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.h
+deck.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.cpp
+deck.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+string
+-
+iostream
+-
+stdio.h
+-
+cstdlib
+-
+ctime
+-
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/driver.cpp
+iostream
+-
+card.cpp
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.cpp
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+deck.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+deck.cpp
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.cpp
+player.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.h
+player.cpp
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.cpp
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/go_fish.cpp
+iostream
+-
+cstdlib
+-
+vector
+-
+fstream
+-
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+player.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.h
+deck.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.cpp
+player.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.h
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+deck.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+string
+-
+iostream
+-
+stdio.h
+-
+cstdlib
+-
+ctime
+-
+vector
+-
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.h
+iostream
+-
+string
+-
+vector
+-
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/tempCodeRunnerFile.cpp
+iostream
+-
+card.cpp
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.cpp
+card.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/card.h
+deck.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.h
+deck.cpp
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/deck.cpp
+player.h
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.h
+player.cpp
+C:/Users/pochi/OneDrive/TheOneNote (LAB)/GitHub/GoFish-EE312/player.cpp
+

@@ -144,7 +144,7 @@ string Player::showBooks() const{
     pBooks.append(" books -- ");
 
     //appends each book to the end of the return string
-    for(int i = 0; i < myBook.size(); i=1+2){
+    for(int i = 0; i < myBook.size(); i=i+1){
         pBooks.append(myBook[i].toString());
         pBooks.append(" ");
     }
