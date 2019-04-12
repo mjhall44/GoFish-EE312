@@ -104,6 +104,10 @@ int main( ) {
             myfile << p1.showHand() << endl; // update player's after picking up a card if the player doesn't ask
             myfile << p2.showHand() << endl;
         }
+//dont need another turn from p2 if p1 has won
+	if(p1.getBookSize() >13){
+		break;
+	}
 
         //**************POCHIH'S TURN
 
